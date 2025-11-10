@@ -10,7 +10,9 @@ pygame.init()
 VIRTUAL_WIDTH, VIRTUAL_HEIGHT = 800, 600
 
 # --- Game settings ---
-BALL_SPEED = 6
+
+BALL_SPEED = 5
+current_speed = BALL_SPEED
 PADDLE_SPEED = 8
 WIN_SCORE = 10
 COLOR_SELECTION_TIME = 10  # seconds
@@ -113,14 +115,16 @@ def color_menu_auto(player_name="Giocatore 1"):
 
 
 def reset_ball():
-    global ball_speed_x, ball_speed_y
+    global ball_speed_x, ball_speed_y, current_speed
     ball.center = (VIRTUAL_WIDTH // 2, VIRTUAL_HEIGHT // 2)
-    ball_speed_x = BALL_SPEED * random.choice((1, -1))
-    ball_speed_y = BALL_SPEED * random.choice((1, -1))
+    current_speed = 3  # slow restart
+    ball_speed_x = current_speed * random.choice((1, -1))
+    ball_speed_y = current_speed * random.choice((1, -1))
+
 
 
 def move_ball():
-    global ball_speed_x, ball_speed_y, score_left, score_right
+    global ball_speed_x, ball_speed_y, score_left, score_right, current_speed
 
     ball.x += ball_speed_x
     ball.y += ball_speed_y
@@ -140,13 +144,20 @@ def move_ball():
     if ball.colliderect(paddle_left):
         if hit_sound:
             hit_sound.play()
-        ball_speed_x = abs(ball_speed_x)
+        current_speed = min(current_speed + 0.4, BALL_SPEED * 1.8)
+        ball_speed_x = abs(current_speed)
+        ball_speed_y = random.choice([-current_speed, current_speed])
         ball.left = paddle_left.right + 1
+
     if ball.colliderect(paddle_right):
         if hit_sound:
             hit_sound.play()
-        ball_speed_x = -abs(ball_speed_x)
+        current_speed = min(current_speed + 0.4, BALL_SPEED * 1.8)
+        ball_speed_x = -abs(current_speed)
+        ball_speed_y = random.choice([-current_speed, current_speed])
         ball.right = paddle_right.left - 1
+
+
 
 
 def pause_game():
@@ -189,16 +200,19 @@ def main():
                 screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
 
         keys = pygame.key.get_pressed()
-        # Paddle Right (↑ / ↓)
-        if keys[pygame.K_UP] and paddle_right.top > 0:
-            paddle_right.y -= PADDLE_SPEED
-        if keys[pygame.K_DOWN] and paddle_right.bottom < VIRTUAL_HEIGHT:
-            paddle_right.y += PADDLE_SPEED
-        # Paddle Left (← / →)
-        if keys[pygame.K_LEFT] and paddle_left.top > 0:
+
+        # Paddle Left (↑ / ↓) — Giocatore 1
+        if keys[pygame.K_UP] and paddle_left.top > 0:
             paddle_left.y -= PADDLE_SPEED
-        if keys[pygame.K_RIGHT] and paddle_left.bottom < VIRTUAL_HEIGHT:
+        if keys[pygame.K_DOWN] and paddle_left.bottom < VIRTUAL_HEIGHT:
             paddle_left.y += PADDLE_SPEED
+
+        # Paddle Right (← / →) — Giocatore 2
+        if keys[pygame.K_LEFT] and paddle_right.top > 0:
+            paddle_right.y -= PADDLE_SPEED
+        if keys[pygame.K_RIGHT] and paddle_right.bottom < VIRTUAL_HEIGHT:
+            paddle_right.y += PADDLE_SPEED
+
 
         move_ball()
 
