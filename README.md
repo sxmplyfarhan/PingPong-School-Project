@@ -9,7 +9,7 @@ PingPong, Un mini gioco creato in python per l'openday della scuola belluzzifior
 - random,time,sys.
 
 ## Scopo?
-il scopo di questo mini gioco è di dimostrare la funzionlaita di un programma con il uso del (makey makey)[https://makeymakey.com]
+Il scopo di questo mini-gioco è di dimostrare la funzionalità di un programma con l'uso del [Makey Makey](https://makeymakey.com).
 
 ## problemi:
 
