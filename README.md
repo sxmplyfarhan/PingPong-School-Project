@@ -33,6 +33,6 @@ L’obiettivo di questo mini-gioco è dimostrare la **funzionalità di un progra
 
 --- 
 
-## Credits
+## Crediti
 
 Grazie a: **thximpulse**, **yue.de.xue**, **orbi_o** per il supporto e l'aiuto nel completamento. Supportutto il mio *orbi_o* <3
