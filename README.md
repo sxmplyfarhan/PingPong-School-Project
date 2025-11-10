@@ -1,20 +1,38 @@
 # PingPong-School-Project
 
-PingPong, Un mini gioco creato in python per l'openday della scuola belluzzifioravanti.
+PingPong è un piccolo gioco in Python creato per l’**Open Day** della scuola Belluzzi Fioravanti. Serve a dimostrare le basi della programmazione di un gioco e sarà giocato con un [Makey Makey](https://makeymakey.com) per input interattivi.
 
-## Creato con le seguenti librerie:
+---
 
-- pygame
-- python 3.0
-- random,time,sys.
+## Librerie utilizzate
 
-## Scopo?
-Il scopo di questo mini-gioco è di dimostrare la funzionalità di un programma con l'uso del [Makey Makey](https://makeymakey.com).
+- Python 3.x  
+- [Pygame](https://www.pygame.org/news)  
+- Librerie standard: `random`, `time`, `sys`
 
-## problemi:
+---
 
-la velocità della palla varia a ogni momento. un esempio è che la prima volta parte veloce, poi nella prossima volta è lenta. La velocita deve essere fissa all'inizio.
+## Struttura del progetto
 
-### Testing:
+Ecco una panoramica di tutti i file presenti:
 
-Il programma verra provato con i computer della scuola. Che hanno windows. Io, il creatore di questo semplice codice use bedrock linux è a me vengono diversi errori nella simulazione.
+- gioco.py : Logica principale del gioco e funzioni
+- impostazioni.py : Impostazioni del gioco: velocità, dimensioni finestra, colori
+- menu_colore.py : Gestione del menu di selezione dei colori
+- palla_rimbalzo.wav : Effetto sonoro della palla che rimbalza
+- principale.py : Punto di ingresso del gioco (menu e ciclo principale)
+- punto.wav : Effetto sonoro quando si segna un punto
+- stato_gioco.py : Tiene traccia del punteggio e dello stato del gioco
+- suoni.py : Caricamento e gestione di tutti gli effetti sonori
+
+---
+
+## Scopo
+
+L’obiettivo di questo mini-gioco è dimostrare la **funzionalità di un programma** utilizzando dispositivi di input esterni (Makey Makey). È una versione semplice di Pong a scopo educativo.
+
+--- 
+
+## Credits
+
+Grazie a: **thximpulse**, **yue.de.xue**, **orbi_o** per il supporto e l'auto nelò completamento. Supportutto il mio orbi_o <3
